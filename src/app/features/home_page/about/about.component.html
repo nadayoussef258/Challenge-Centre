@@ -1,0 +1,47 @@
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-img-main">
+          <img
+            src="https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=600&q=80"
+            alt="فريق مركز التحدي"
+          />
+        </div>
+        <div class="about-img-secondary">
+          <img
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80"
+            alt="جلسة تأهيل"
+          />
+        </div>
+        <div class="about-years-badge">
+          <span class="years-num">10+</span>
+          <span class="years-label">سنوات من العطاء</span>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <div class="accent-bar"></div>
+        <h2 class="section-title">من نحن</h2>
+        <p class="section-subtitle">
+          مركز التحدي للتأهيل هو مركز متخصص يقدم خدمات شاملة للأطفال وذوي الاحتياجات الخاصة، يعمل بأيدي فريق من المتخصصين المؤهلين في مجالات التخاطب والتأهيل النفسي والحركي.
+        </p>
+        <p class="about-para">
+          نؤمن بأن كل طفل يملك إمكانيات لا محدودة، وهدفنا هو مساعدتهم على تجاوز التحديات وتحقيق أقصى قدراتهم في بيئة دافئة وآمنة تملؤها المحبة والاحترافية.
+        </p>
+
+        <div class="about-values">
+          <div class="value-item" *ngFor="let v of values">
+            <div class="value-icon">{{ v.icon }}</div>
+            <div>
+              <div class="value-title">{{ v.title }}</div>
+              <div class="value-desc">{{ v.desc }}</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn-primary">تعرف على فريقنا</a>
+      </div>
+    </div>
+  </div>
+</section>

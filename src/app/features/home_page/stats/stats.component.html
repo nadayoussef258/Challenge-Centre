@@ -1,0 +1,39 @@
+<section class="stats" id="stats">
+  <div class="stats-inner">
+    <div class="container">
+      <div class="stats-header">
+        <div class="accent-bar" style="background: var(--accent); margin: 0 auto 20px;"></div>
+        <h2 class="section-title" style="color: var(--white);">إنجازاتنا بالأرقام</h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.75); margin: 0 auto;">
+          نفخر بما حققناه من نتائج حقيقية غيّرت حياة مئات الأسر
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card" *ngFor="let s of stats">
+          <div class="stat-icon">{{ s.icon }}</div>
+          <div class="stat-num">{{ s.num }}</div>
+          <div class="stat-label">{{ s.label }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonial-strip">
+    <div class="container">
+      <div class="testimonials-grid">
+        <div class="testimonial-card" *ngFor="let t of testimonials">
+          <div class="quote-icon">"</div>
+          <p class="testimonial-text">{{ t.text }}</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">{{ t.initials }}</div>
+            <div>
+              <div class="author-name">{{ t.name }}</div>
+              <div class="author-role">{{ t.role }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
