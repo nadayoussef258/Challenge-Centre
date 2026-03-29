@@ -79,7 +79,7 @@
 .hero-title {
   font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 900;
-  line-height: 1.15;
+  line-height: 1.5;
   color: var(--text-dark);
   margin-bottom: 20px;
   animation: fadeInUp 0.7s ease;

@@ -1,23 +1,25 @@
 <section class="services" id="services">
-  <div class="services-bg"></div>
   <div class="container">
     <div class="services-header">
       <div class="accent-bar"></div>
       <h2 class="section-title">خدماتنا المتخصصة</h2>
       <p class="section-subtitle">
-        نقدم مجموعة متكاملة من الخدمات العلاجية والتأهيلية المصممة لتلبية احتياجات كل طفل وأسرته
-      </p>
+نقدم مجموعة متكاملة من الخدمات العلاجية والتأهيلية المصممة لتلبية احتياجات كل طفل وأسرته      </p>
     </div>
 
     <div class="services-grid">
-      <div class="service-card" *ngFor="let s of services; let i = index" [style.animation-delay]="(i * 0.1) + 's'">
+      <div class="service-card" *ngFor="let s of services; let i = index" [style.animation-delay]="(i * 0.12) + 's'">
         <div class="service-icon-wrap">
-          <span class="service-icon">{{ s.icon }}</span>
-        </div>
+  <i [class]="s.icon + ' service-icon'" style="color: var(--primary);"></i>
+</div>
         <h3 class="service-title">{{ s.title }}</h3>
         <p class="service-desc">{{ s.desc }}</p>
-        <div class="service-tag" *ngFor="let tag of s.tags">{{ tag }}</div>
+        <div class="service-price">{{ s.price }}</div>
+        <div class="tags-row">
+          <span class="service-tag" *ngFor="let tag of s.tags">{{ tag }}</span>
+        </div>
       </div>
     </div>
+
   </div>
 </section>

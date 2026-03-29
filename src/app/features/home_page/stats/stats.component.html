@@ -3,37 +3,21 @@
     <div class="container">
       <div class="stats-header">
         <div class="accent-bar" style="background: var(--accent); margin: 0 auto 20px;"></div>
-        <h2 class="section-title" style="color: var(--white);">إنجازاتنا بالأرقام</h2>
+        <h2 class="section-title" style="color: var(--white);">خطوات الالتحاق بالمركز</h2>
         <p class="section-subtitle" style="color: rgba(255,255,255,0.75); margin: 0 auto;">
-          نفخر بما حققناه من نتائج حقيقية غيّرت حياة مئات الأسر
+          إجراءات واضحة وبسيطة للانضمام إلى مركز التحدي وبدء رحلة التأهيل
         </p>
       </div>
-
-      <div class="stats-grid">
-        <div class="stat-card" *ngFor="let s of stats">
-          <div class="stat-icon">{{ s.icon }}</div>
-          <div class="stat-num">{{ s.num }}</div>
-          <div class="stat-label">{{ s.label }}</div>
+      <div class="steps-grid">
+        <div class="step-card" *ngFor="let s of steps; let i = index">
+          <div class="step-num">{{ i + 1 }}</div>
+<div class="step-icon"><i [class]="s.icon" style="color: var(--white);"></i></div>
+          <div class="step-title">{{ s.title }}</div>
+          <div class="step-desc">{{ s.desc }}</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="testimonial-strip">
-    <div class="container">
-      <div class="testimonials-grid">
-        <div class="testimonial-card" *ngFor="let t of testimonials">
-          <div class="quote-icon">"</div>
-          <p class="testimonial-text">{{ t.text }}</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">{{ t.initials }}</div>
-            <div>
-              <div class="author-name">{{ t.name }}</div>
-              <div class="author-role">{{ t.role }}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 </section>

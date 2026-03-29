@@ -8,20 +8,15 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
- form = { name: '', phone: '', service: '', message: '' };
+export class ContactComponent {
+ form = { name: '', phone: '', service: '', age: '', message: '' };
   sent = false;
 
   submitForm() {
     this.sent = true;
     setTimeout(() => {
       this.sent = false;
-      this.form = { name: '', phone: '', service: '', message: '' };
-    }, 4000);
+      this.form = { name: '', phone: '', service: '', age: '', message: '' };
+    }, 5000);
   }
 }

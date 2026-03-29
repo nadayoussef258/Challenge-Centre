@@ -15,8 +15,8 @@
           />
         </div>
         <div class="about-years-badge">
-          <span class="years-num">10+</span>
-          <span class="years-label">سنوات من العطاء</span>
+  <span class="years-num"><i class="fa-solid fa-certificate"></i></span>
+          <span class="years-label">معتمد رسمياً</span>
         </div>
       </div>
 
@@ -24,15 +24,14 @@
         <div class="accent-bar"></div>
         <h2 class="section-title">من نحن</h2>
         <p class="section-subtitle">
-          مركز التحدي للتأهيل هو مركز متخصص يقدم خدمات شاملة للأطفال وذوي الاحتياجات الخاصة، يعمل بأيدي فريق من المتخصصين المؤهلين في مجالات التخاطب والتأهيل النفسي والحركي.
-        </p>
+مركز التحدي للتأهيل هو مركز متخصص يقدم خدمات شاملة للأطفال وذوي الاحتياجات الخاصة، يعمل بأيدي فريق من المتخصصين المؤهلين في مجالات التخاطب والتأهيل النفسي والحركي.        </p>
         <p class="about-para">
-          نؤمن بأن كل طفل يملك إمكانيات لا محدودة، وهدفنا هو مساعدتهم على تجاوز التحديات وتحقيق أقصى قدراتهم في بيئة دافئة وآمنة تملؤها المحبة والاحترافية.
+نؤمن بأن كل طفل يملك إمكانيات لا محدودة، وهدفنا هو مساعدتهم على تجاوز التحديات وتحقيق أقصى قدراتهم في بيئة دافئة وآمنة تملؤها المحبة والاحترافية.
         </p>
 
         <div class="about-values">
           <div class="value-item" *ngFor="let v of values">
-            <div class="value-icon">{{ v.icon }}</div>
+<div class="value-icon"><i [class]="v.icon" style="color: var(--accent-dark);"></i></div>
             <div>
               <div class="value-title">{{ v.title }}</div>
               <div class="value-desc">{{ v.desc }}</div>
@@ -40,7 +39,7 @@
           </div>
         </div>
 
-        <a href="#contact" class="btn-primary">تعرف على فريقنا</a>
+        <a href="tel:0557706772" class="btn-primary">تواصل معنا</a>
       </div>
     </div>
   </div>
