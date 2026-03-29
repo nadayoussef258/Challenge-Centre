@@ -219,7 +219,6 @@
 
 @media (max-width: 900px) {
   .hero-content { grid-template-columns: 1fr; gap: 40px; }
-  .hero-visual { display: none; }
   .hero { padding: 100px 0 60px; min-height: auto; }
 }
 

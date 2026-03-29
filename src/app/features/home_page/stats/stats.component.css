@@ -331,6 +331,6 @@
 }
 
 @media (max-width: 500px) {
-  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .steps-grid { grid-template-columns: repeat(1, 1fr); }
   .programs-grid { grid-template-columns: 1fr; }
 }

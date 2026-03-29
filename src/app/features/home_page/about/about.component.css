@@ -156,7 +156,6 @@
 
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-visual { display: none; }
 }
 
 @media (max-width: 480px) {
