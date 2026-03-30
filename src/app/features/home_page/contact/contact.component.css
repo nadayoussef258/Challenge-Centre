@@ -354,3 +354,40 @@
   .contact-cards { grid-template-columns: 1fr; }
   .contact-card--full { grid-column: auto; }
 }
+
+.success-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(125, 196, 31, 0.1);
+  border: 1.5px solid var(--accent);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 20px;
+  font-size: 0.92rem;
+}
+
+.success-msg span { font-size: 1.5rem; flex-shrink: 0; }
+.success-msg strong { display: block; color: var(--accent-dark); font-size: 1rem; margin-bottom: 4px; }
+.success-msg p { color: var(--text-muted); margin: 0; }
+
+.error-msg {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1.5px solid rgba(220, 38, 38, 0.3);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  font-size: 0.88rem;
+  color: #dc2626;
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.loading-dots { display: inline-block; }

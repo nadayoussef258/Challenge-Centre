@@ -10,24 +10,36 @@
 
         <div class="contact-cards">
           <a href="tel:+971544405857" class="contact-card">
-  <div class="contact-card-icon"><i class="fa-solid fa-mobile-screen-button" style="color: var(--primary);"></i></div>
+            <div class="contact-card-icon">
+              <i class="fa-solid fa-mobile-screen-button" style="color: var(--primary)"></i>
+            </div>
             <div>
               <div class="contact-card-label">موبايل / واتساب</div>
               <div class="contact-card-value" dir="ltr">+971544405857</div>
             </div>
           </a>
           <a href="mailto:info@alttahadi.com" class="contact-card">
-  <div class="contact-card-icon"><i class="fa-solid fa-envelope" style="color: var(--primary);"></i></div>
+            <div class="contact-card-icon">
+              <i class="fa-solid fa-envelope" style="color: var(--primary)"></i>
+            </div>
             <div>
               <div class="contact-card-label">البريد الإلكتروني</div>
               <div class="contact-card-value">info&#64;alttahadi.com</div>
             </div>
           </a>
-          <a href="https://share.google/qQbiUc0g7vIt9D5am" target="_blank" class="contact-card contact-card--full">
-  <div class="contact-card-icon"><i class="fa-solid fa-location-dot" style="color: var(--primary);"></i></div>
+          <a
+            href="https://share.google/qQbiUc0g7vIt9D5am"
+            target="_blank"
+            class="contact-card contact-card--full"
+          >
+            <div class="contact-card-icon">
+              <i class="fa-solid fa-location-dot" style="color: var(--primary)"></i>
+            </div>
             <div>
               <div class="contact-card-label">العنوان</div>
-              <div class="contact-card-value">المويجعي — الرويكة — شارع 22-17، مدينة العين، إمارة أبوظبي</div>
+              <div class="contact-card-value">
+                المويجعي — الرويكة — شارع 22-17، مدينة العين، إمارة أبوظبي
+              </div>
             </div>
           </a>
         </div>
@@ -52,15 +64,28 @@
         <div class="form-card">
           <h3 class="form-title">احجز موعدك الآن</h3>
           <p class="form-subtitle">أرسل لنا رسالة وسيتواصل معك فريقنا في أقرب وقت</p>
-          <form class="contact-form" (ngSubmit)="submitForm()" #f="ngForm">
+
+          <div class="success-msg" *ngIf="sent">
+            <span>✅</span>
+            <div>
+              <strong>تم إرسال طلبك بنجاح!</strong>
+              <p>سيتواصل معك فريق مركز التحدي في أقرب وقت ممكن.</p>
+            </div>
+          </div>
+
+          <div class="error-msg" *ngIf="error">
+            <span>⚠️</span> {{ error }}
+          </div>
+
+          <form class="contact-form" (ngSubmit)="submitForm()" *ngIf="!sent">
             <div class="form-row">
               <div class="form-group">
-                <label>اسم الطالب</label>
+                <label>اسم الطالب *</label>
                 <input type="text" placeholder="أدخل الاسم" required [(ngModel)]="form.name" name="name" />
               </div>
               <div class="form-group">
-                <label>رقم الهاتف</label>
-                <input type="tel" placeholder="05XXXXXXXX" [(ngModel)]="form.phone" name="phone" />
+                <label>رقم الهاتف *</label>
+                <input type="tel" placeholder="05XXXXXXXX" required [(ngModel)]="form.phone" name="phone" />
               </div>
             </div>
             <div class="form-group">
@@ -69,7 +94,10 @@
                 <option value="">اختر الخدمة</option>
                 <option>التربية الخاصة — 250 درهم/جلسة</option>
                 <option>تأهيل اضطرابات اللغة والكلام — 250 درهم/جلسة</option>
-                <option>تعديل السلوك — 250 درهم/جلسة</option>
+                <option>تعديل السلوك (ABA) — 250 درهم/جلسة</option>
+                <option>التدخل المبكر — 250 درهم/جلسة</option>
+                <option>الدمج المجتمعي — 250 درهم/جلسة</option>
+                <option>تدريب وإشراك الأسرة — 250 درهم/جلسة</option>
                 <option>فتح ملف + جلسة أولى — 400 درهم</option>
               </select>
             </div>

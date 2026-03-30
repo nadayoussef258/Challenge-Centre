@@ -1,0 +1,35 @@
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="ChallengeLogo.png" alt="مركز التحدي" />
+      <div class="login-brand">
+        <span class="brand-name">مركز التحدي</span>
+        <span class="brand-sub">لوحة تحكم الإدارة</span>
+      </div>
+    </div>
+
+    <h2 class="login-title">تسجيل الدخول</h2>
+    <p class="login-desc">أدخل بيانات الدخول للوصول إلى لوحة التحكم</p>
+
+    <div class="error-msg" *ngIf="error">
+      <i class="fa-solid fa-triangle-exclamation"></i> {{ error }}
+    </div>
+
+    <form class="login-form" (ngSubmit)="login()">
+      <div class="form-group">
+        <label>البريد الإلكتروني</label>
+        <input type="email" placeholder="admin@alttahadi.com" [(ngModel)]="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label>كلمة المرور</label>
+        <input type="password" placeholder="••••••••" [(ngModel)]="password" name="password" required />
+      </div>
+      <button type="submit" class="login-btn" [disabled]="loading">
+        <span *ngIf="!loading"> تسجيل الدخول </span>
+        <span *ngIf="loading">جاري التحقق...</span>
+      </button>
+    </form>
+
+    <a href="/" class="back-link">← العودة إلى الموقع</a>
+  </div>
+</div>
