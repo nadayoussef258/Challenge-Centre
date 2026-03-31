@@ -124,9 +124,9 @@
   border-color: var(--accent);
 }
 
-.cs-icon { display: block; font-size: 1.8rem; margin-bottom: 8px; }
+.cs-icon { display: block; font-size: 2rem; margin-bottom: 8px; }
 .cs-num { display: block; font-size: 1.6rem; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 4px; }
-.cs-label { font-size: 0.75rem; color: rgba(255,255,255,0.7); font-weight: 500; }
+.cs-label { font-size: 0.9rem; color: rgba(255,255,255,0.7); font-weight: 500; }
 
 .cta-quote {
   grid-column: 1 / -1;
@@ -140,7 +140,7 @@
 }
 
 .cta-quote i { color: var(--accent); font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
-.cta-quote p { font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.75; font-style: italic; margin: 0; }
+.cta-quote p { font-size: 1.2rem; color: rgba(255,255,255,0.8); line-height: 1.75; font-style: italic; margin: 0; }
 
 @media (max-width: 900px) {
   .cta-content { grid-template-columns: 1fr; gap: 40px; }

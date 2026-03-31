@@ -124,7 +124,7 @@
   background: rgba(255,255,255,0.15);
   border-radius: 50%;
   color: white;
-  font-size: 0.7rem;
+  font-size: 1.2rem;
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -155,7 +155,7 @@
   color: white;
   border-radius: 20px;
   padding: 3px 12px;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: 800;
   letter-spacing: 0.3px;
   margin-bottom: 10px;
@@ -175,7 +175,7 @@
 }
 
 .card-subtitle {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--accent-light);
   font-weight: 600;
   margin-bottom: 12px;
@@ -185,7 +185,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.88rem;
+  font-size: 1.1rem;
   color: rgba(255,255,255,0.75);
   font-style: italic;
   padding: 10px 14px;
@@ -210,7 +210,7 @@
 }
 
 .card-desc {
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: rgba(255,255,255,0.82);
   line-height: 1.85;
   padding: 14px 0 12px;
@@ -222,7 +222,7 @@
   color: white;
   padding: 8px 20px;
   border-radius: 20px;
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 800;
   transition: all 0.2s;
   margin-bottom: 8px;
@@ -236,7 +236,7 @@
   align-items: center;
   gap: 6px;
   margin-top: 12px;
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   color: rgba(255,255,255,0.45);
   transition: color 0.2s;
 }

@@ -18,7 +18,7 @@ activeStep: number | null = null;
   steps = [
     {
       icon: 'fa-solid fa-paper-plane',
-      emoji: '✉️',
+      emoji: 'fa-solid fa-comments',
       badge: 'المحطة الأولى',
       title: 'نقطة الانطلاق',
       subtitle: 'تواصلكم معنا — نلتقي لنرتقي',
@@ -29,7 +29,7 @@ activeStep: number | null = null;
     },
     {
       icon: 'fa-solid fa-compass',
-      emoji: '🧭',
+      emoji: 'fa-solid fa-magnifying-glass',
       badge: 'المحطة الثانية',
       title: 'بوصلة القدرات',
       subtitle: 'عدسة الاستكشاف — التقييم الشامل',
@@ -40,7 +40,7 @@ activeStep: number | null = null;
     },
     {
       icon: 'fa-solid fa-pen-ruler',
-      emoji: '🧩',
+      emoji: 'fa-solid fa-lightbulb',
       badge: 'المحطة الثالثة',
       title: 'هندسة النجاح',
       subtitle: 'بصمة التميز — الخطة الفردية IEP',
@@ -51,7 +51,7 @@ activeStep: number | null = null;
     },
     {
       icon: 'fa-solid fa-rocket',
-      emoji: '🚀',
+      emoji: 'fa-solid fa-bolt',
       badge: 'المحطة الرابعة',
       title: 'خطوة الانطلاق',
       subtitle: 'الانطلاق نحو القمة — رحلة التأهيل',
@@ -62,7 +62,7 @@ activeStep: number | null = null;
     },
     {
       icon: 'fa-solid fa-tree',
-      emoji: '🌳',
+      emoji: 'fa-solid fa-hand-holding-heart',
       badge: 'المحطة الخامسة',
       title: 'ثمار التمكين',
       subtitle: 'شركاء النجاح — المتابعة المستمرة',
