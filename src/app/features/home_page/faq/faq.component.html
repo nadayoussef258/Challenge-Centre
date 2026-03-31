@@ -1,0 +1,42 @@
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-left">
+        <div class="accent-bar"></div>
+        <h2 class="section-title">ركن الشفافية</h2>
+        <p class="section-subtitle">
+          إجابات لكل تساؤلاتكم — نحن هنا لنجعل كل خطوة واضحة ومريحة
+        </p>
+        <div class="faq-illustration">
+          <div class="ill-circle ill-1"></div>
+          <div class="ill-circle ill-2"></div>
+          <div class="ill-icon">💬</div>
+          <p class="ill-text">لم تجد إجابتك؟</p>
+          <a href="https://wa.me/971557706772" target="_blank" class="ill-btn">
+            <i class="fa-brands fa-whatsapp"></i>
+            تحدث مع مستشارنا الآن
+          </a>
+        </div>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item" *ngFor="let f of faqs; let i = index"
+             [class.open]="activeIndex === i"
+             (click)="toggle(i)">
+          <div class="faq-question">
+            <div class="faq-icon-wrap">
+              <i [class]="f.icon"></i>
+            </div>
+            <span class="faq-q-text">{{ f.q }}</span>
+            <div class="faq-arrow">
+              <i class="fa-solid" [class.fa-plus]="activeIndex !== i" [class.fa-minus]="activeIndex === i"></i>
+            </div>
+          </div>
+          <div class="faq-answer" [class.open]="activeIndex === i">
+            <p>{{ f.a }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

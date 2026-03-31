@@ -2,22 +2,57 @@
   <div class="stats-inner">
     <div class="container">
       <div class="stats-header">
-        <div class="accent-bar" style="background: var(--accent); margin: 0 auto 20px;"></div>
-        <h2 class="section-title" style="color: var(--white);">خطوات الالتحاق بالمركز</h2>
+        <div class="accent-bar" style="background: var(--accent); margin: 0 auto 16px;"></div>
+        <h2 class="section-title" style="color: var(--white);">رحلتكم تبدأ هنا</h2>
         <p class="section-subtitle" style="color: rgba(255,255,255,0.75); margin: 0 auto;">
-          إجراءات واضحة وبسيطة للانضمام إلى مركز التحدي وبدء رحلة التأهيل
+          خطوات الانضمام إلى عائلة مركز التحدي للتدريب والتأهيل
         </p>
       </div>
-      <div class="steps-grid">
-        <div class="step-card" *ngFor="let s of steps; let i = index">
-          <div class="step-num">{{ i + 1 }}</div>
-<div class="step-icon"><i [class]="s.icon" style="color: var(--white);"></i></div>
-          <div class="step-title">{{ s.title }}</div>
-          <div class="step-desc">{{ s.desc }}</div>
+
+      <!-- Roadmap -->
+      <div class="roadmap">
+        <div class="roadmap-line"></div>
+
+        <div class="roadmap-step"
+             *ngFor="let s of steps; let i = index"
+             [class.active]="activeStep === i"
+             [class.even]="i % 2 === 1"
+             (click)="toggleStep(i)">
+
+          <!-- Node on the line -->
+          <div class="step-node">
+            <div class="node-circle">
+              <i [class]="s.icon"></i>
+            </div>
+            <div class="node-num">{{ i + 1 }}</div>
+          </div>
+
+          <!-- Card -->
+          <div class="step-card">
+            <div class="card-badge">{{ s.badge }}</div>
+            <div class="card-emoji">{{ s.emoji }}</div>
+            <h3 class="card-title">{{ s.title }}</h3>
+            <p class="card-subtitle">{{ s.subtitle }}</p>
+            <div class="card-short">
+              <i class="fa-solid fa-quote-right"></i>
+              {{ s.short }}
+            </div>
+
+            <!-- Expanded content -->
+            <div class="card-body" [class.open]="activeStep === i">
+              <p class="card-desc">{{ s.desc }}</p>
+              <a href="#contact" class="card-cta" (click)="$event.stopPropagation()">
+                {{ s.cta }} ←
+              </a>
+            </div>
+
+            <div class="card-toggle">
+              <i class="fa-solid" [class.fa-chevron-down]="activeStep !== i" [class.fa-chevron-up]="activeStep === i"></i>
+              <span>{{ activeStep === i ? 'إخفاء التفاصيل' : 'اقرأ أكثر' }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-
 </section>
