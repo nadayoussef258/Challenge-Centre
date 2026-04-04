@@ -10,10 +10,15 @@ import {
 
 export interface ContactRequest {
   id: string;
+  // بيانات الطالب
   name: string;
+  studentAge: string;
+  diagnosis: string;
+  // بيانات ولي الأمر
+  parentName: string;
   phone: string;
+  // الخدمة
   service: string;
-  age: string;
   message: string;
   status: 'new' | 'contacted' | 'enrolled' | 'closed';
   createdAt: Timestamp;
@@ -23,7 +28,7 @@ export interface ContactRequest {
   selector: 'app-admin-dashboard',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './admin-dashboard.component.html',
+ templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'
 })
 export class AdminDashboardComponent implements OnInit {
@@ -53,10 +58,7 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit() {
     const q = query(collection(db, 'contact_requests'), orderBy('createdAt', 'desc'));
     onSnapshot(q, (snap) => {
-      this.requests = snap.docs.map(d => ({
-        id: d.id,
-        ...d.data()
-      } as ContactRequest));
+      this.requests = snap.docs.map(d => ({ id: d.id, ...d.data() } as ContactRequest));
       this.applyFilter(this.activeFilter);
       this.loading = false;
     });
@@ -90,16 +92,19 @@ export class AdminDashboardComponent implements OnInit {
     this.activeRequest = null;
   }
 
-  openRequest(r: ContactRequest) {
-    this.activeRequest = r;
-  }
-
+  openRequest(r: ContactRequest) { this.activeRequest = r; }
   closeRequest() { this.activeRequest = null; }
 
   formatDate(ts: Timestamp): string {
     if (!ts) return '—';
-    const d = ts.toDate();
-    return d.toLocaleDateString('ar-AE', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    return ts.toDate().toLocaleDateString('ar-AE', {
+      year: 'numeric', month: 'long', day: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+  }
+
+  getWhatsAppLink(phone: string): string {
+    return 'https://wa.me/' + phone.replace(/^0/, '971');
   }
 
   async logout() {

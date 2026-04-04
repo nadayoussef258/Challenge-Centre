@@ -1,25 +1,64 @@
 <section class="services" id="services">
   <div class="container">
+
+    <!-- Header -->
     <div class="services-header">
       <div class="accent-bar"></div>
       <h2 class="section-title">خدماتنا المتخصصة</h2>
       <p class="section-subtitle">
-نقدم مجموعة متكاملة من الخدمات التدريبية والتأهيلية المصممة لتلبية احتياجات كل طفل وأسرته      </p>
+        نقدم مجموعة متكاملة من الخدمات التدريبية والتأهيلية المصممة لتلبية احتياجات كل طفل وأسرته
+      </p>
     </div>
 
+    <!-- Main Services Grid (6 cards) -->
     <div class="services-grid">
-      <div class="service-card" *ngFor="let s of services; let i = index" [style.animation-delay]="(i * 0.12) + 's'">
+      <div class="service-card" *ngFor="let s of services; let i = index"
+           [style.animation-delay]="(i * 0.1) + 's'">
         <div class="service-icon-wrap">
-  <i [class]="s.icon + ' service-icon'" style="color: var(--primary);"></i>
-</div>
+          <i [class]="s.icon + ' service-icon'" style="color: var(--primary);"></i>
+        </div>
         <h3 class="service-title">{{ s.title }}</h3>
         <p class="service-desc">{{ s.desc }}</p>
-        <!-- <div class="service-price">{{ s.price }}</div> -->
         <div class="tags-row">
           <span class="service-tag" *ngFor="let tag of s.tags">{{ tag }}</span>
         </div>
       </div>
     </div>
+
+    <!-- Community Services Section -->
+    <div class="community-section">
+      <div class="community-header">
+        <div class="community-header-text">
+          <div class="community-badge">
+            <i class="fa-solid fa-people-group"></i>
+            خدمات دعم المجتمع
+          </div>
+          <h3 class="community-title">شراكة حقيقية تمتد خارج جدران المركز</h3>
+          <p class="community-subtitle">
+            نؤمن بأن التأهيل لا يكتمل داخل المركز وحده — بل ينعكس على البيت والمدرسة والمجتمع
+          </p>
+        </div>
+      </div>
+
+      <div class="community-grid">
+        <div class="community-card" *ngFor="let s of communityServices; let i = index"
+             [style.animation-delay]="(i * 0.12) + 's'">
+          <div class="community-icon-wrap">
+            <i [class]="s.icon"></i>
+          </div>
+          <div class="community-card-body">
+            <h4 class="community-card-title">{{ s.title }}</h4>
+            <p class="community-card-subtitle">{{ s.subtitle }}</p>
+            <p class="community-card-desc">{{ s.desc }}</p>
+            <div class="tags-row">
+              <span class="community-tag" *ngFor="let tag of s.tags">{{ tag }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
 
   </div>
 </section>

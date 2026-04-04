@@ -11,31 +11,53 @@ import { db } from '../../../firebase.config';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
-form = { name: '', phone: '', service: '', age: '', message: '' };
+  form = {
+    // بيانات الطالب
+    studentName: '',
+    studentAge: '',
+    diagnosis: '',
+    // بيانات ولي الأمر
+    parentName: '',
+    phone: '',
+    // الخدمة
+    service: '',
+    // ملاحظات
+    message: ''
+  };
+
   sent = false;
   loading = false;
   error = '';
 
   async submitForm() {
-    if (!this.form.name || !this.form.phone) {
-      this.error = 'يرجى ملء الاسم ورقم الهاتف على الأقل';
+    if (!this.form.studentName || !this.form.phone || !this.form.parentName) {
+      this.error = 'يرجى ملء اسم الطالب واسم ولي الأمر ورقم الهاتف على الأقل';
       return;
     }
     this.loading = true;
     this.error = '';
     try {
       await addDoc(collection(db, 'contact_requests'), {
-        name: this.form.name,
+        // بيانات الطالب
+        name: this.form.studentName,
+        studentAge: this.form.studentAge,
+        diagnosis: this.form.diagnosis,
+        // بيانات ولي الأمر
+        parentName: this.form.parentName,
         phone: this.form.phone,
+        // الخدمة والملاحظات
         service: this.form.service,
-        age: this.form.age,
         message: this.form.message,
+        // الحالة والوقت
         status: 'new',
         createdAt: serverTimestamp()
       });
       this.sent = true;
-      this.form = { name: '', phone: '', service: '', age: '', message: '' };
-      setTimeout(() => { this.sent = false; }, 6000);
+      this.form = {
+        studentName: '', studentAge: '', diagnosis: '',
+        parentName: '', phone: '', service: '', message: ''
+      };
+      setTimeout(() => { this.sent = false; }, 8000);
     } catch (e) {
       this.error = 'حدث خطأ، يرجى المحاولة مرة أخرى';
     } finally {

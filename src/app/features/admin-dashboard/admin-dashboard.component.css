@@ -325,7 +325,7 @@
 
 .status-select:focus { border-color: #2D2D8E; }
 
-/* Detail Panel */
+/* ── Detail Panel ── */
 .overlay {
   position: fixed;
   inset: 0;
@@ -335,15 +335,17 @@
 
 .detail-panel {
   position: fixed;
-  top: 0; left: 0;
-  width: 400px;
-  height: 100vh;
+  top: 0;
+  left: 0;
+  right: unset;
+  width: min(100%, 440px);
+  height: 100vh;           /* ← ارتفاع كامل */
   background: white;
   z-index: 300;
-  box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+  box-shadow: 8px 0 40px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: hidden;        /* ← يمنع الـ panel نفسه من الـ scroll */
 }
 
 .panel-header {
@@ -351,64 +353,171 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px;
-  border-bottom: 1px solid #e8eaf0;
+  border-bottom: 1px solid #e8f0f5;
   background: #f8f9fa;
+  flex-shrink: 0;          /* ← ثابت ما بيتضغطش */
 }
 
 .panel-title { font-size: 1.1rem; font-weight: 800; color: #1a1a2e; }
 
 .panel-close {
-  width: 32px; height: 32px;
-  border-radius: 8px;
+  width: 36px; height: 36px;
+  border-radius: 10px;
   border: none;
   background: #e8eaf0;
   cursor: pointer;
-  font-size: 0.9rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  color: #2d2d8e;
+  flex-shrink: 0;
 }
 
-.panel-close:hover { background: #ef4444; color: white; }
+.panel-close i { font-size: 0.95rem; }
 
-.panel-body { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 24px; }
+.panel-close:hover { background: #2D2D8E; color: white; }
+.panel-close:hover i { color: white; }
 
-.detail-section { display: flex; flex-direction: column; gap: 14px; }
+.panel-body {
+  flex: 1;
+  overflow-y: auto;        /* ← هنا بس الـ scroll */
+  overflow-x: hidden;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;           /* ← مهم جداً عشان flex scroll يشتغل */
+}
 
-.detail-row { display: flex; flex-direction: column; gap: 4px; }
-.detail-label { font-size: 0.75rem; color: #9ca3af; font-weight: 600; text-transform: uppercase; }
-.detail-value { font-size: 0.95rem; color: #1a1a2e; font-weight: 600; }
-.message-val { white-space: pre-wrap; line-height: 1.7; font-weight: 400; color: #374151; }
+/* ── Panel Sections ── */
+.panel-section {
+  border: 1px solid #e8eaf0;
+  border-radius: 14px;
+  /* overflow: hidden; */
+  width: 100%;
+}
 
-.phone-link { color: #2D2D8E; }
+.panel-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e8eaf0;
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #2D2D8E;
+}
+
+.ps-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: rgba(45,45,142,0.08);
+  color: #2D2D8E;
+  font-size: 0.92rem;
+  flex-shrink: 0;
+}
+
+.ps-icon i { font-size: 0.95rem; }
+
+/* ── Detail Rows ── */
+.panel-section .detail-row {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.panel-section .detail-row:last-child { border-bottom: none; }
+
+.detail-label {
+  font-size: 0.72rem;
+  color: #9ca3af;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.detail-value {
+  font-size: 0.93rem;
+  color: #1a1a2e;
+  font-weight: 600;
+  word-break: break-word;
+  width: 100%;
+  min-width: 0;
+}
+
+.message-val {
+  white-space: pre-wrap;
+  line-height: 1.7;
+  font-weight: 400;
+  color: #374151;
+}
+
+/* ── Links ── */
+.phone-link { color: #2D2D8E; text-decoration: none; }
+.phone-link:hover { text-decoration: underline; }
+
 .wa-link {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: #25d366;
   color: white;
-  padding: 7px 14px;
-  border-radius: 20px;
+  padding: 9px 16px;
+  border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 700;
-  transition: opacity 0.2s;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
   width: fit-content;
 }
 
-.wa-link:hover { opacity: 0.85; }
+.wa-link i { font-size: 0.95rem; }
+.wa-link:hover { opacity: 0.9; transform: translateY(-1px); }
 
-.panel-actions { border-top: 1px solid #e8eaf0; padding-top: 20px; }
-.actions-label { font-size: 0.82rem; color: #6b7280; font-weight: 600; margin-bottom: 12px; }
+/* ── Panel Actions ── */
+ 
+.panel-actions {
+  border-top: 1px solid #e8eaf0;
+  padding: 16px 24px;
+  flex-shrink: 0;          /* ← الأزرار ثابتة في الأسفل دايماً */
+  background: white;
+}
 
-.status-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+.actions-label {
+  font-size: 0.82rem;
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.status-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
 
 .status-action-btn {
-  padding: 10px;
-  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 10px;
+  border-radius: 12px;
   border: 1.5px solid #e8eaf0;
   background: white;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
   font-family: 'Cairo', sans-serif;
   cursor: pointer;
@@ -416,8 +525,19 @@
   color: #374151;
 }
 
-.status-action-btn:hover { border-color: #2D2D8E; }
-.status-action-btn.active-status { background: #2D2D8E; color: white; border-color: #2D2D8E; }
+.status-action-btn i {
+  font-size: 0.75rem;
+}
+
+.status-action-btn:hover { border-color: #2D2D8E; color: #2D2D8E; }
+
+.status-action-btn.active-status {
+  background: #2D2D8E;
+  color: white;
+  border-color: #2D2D8E;
+}
+
+.status-action-btn.active-status i { color: white; }
 
 .delete-btn {
   width: 100%;
@@ -431,12 +551,41 @@
   font-family: 'Cairo', sans-serif;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-.delete-btn:hover { background: #ef4444; color: white; }
+.delete-btn:hover { background: #ef4444; color: white; border-color: #ef4444; }
 
+/* ── Table Cell Extras ── */
+.student-cell { display: flex; flex-direction: column; gap: 2px; }
+.cell-sub { font-size: 0.74rem; color: #9ca3af; font-weight: 400; }
+
+.diagnosis-tag {
+  display: inline-block;
+  background: rgba(45,45,142,0.08);
+  color: #2D2D8E;
+  border-radius: 8px;
+  padding: 3px 10px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.phone-td { font-size: 0.85rem; font-family: monospace; }
+
+/* ── Standalone detail rows (outside panel-section) ── */
+.detail-section { display: flex; flex-direction: column; gap: 14px; }
+.detail-row { display: flex; flex-direction: column; gap: 4px; }
+
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .sidebar { display: none; }
   .main-content { margin-right: 0; padding: 20px 16px; }
-  .detail-panel { width: 100%; }
+  .detail-panel { width: 100%; left: 0; }
 }

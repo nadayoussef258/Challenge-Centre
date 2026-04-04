@@ -9,22 +9,20 @@
         <div class="sidebar-sub">لوحة التحكم</div>
       </div>
     </div>
-
     <nav class="sidebar-nav">
       <button class="nav-item active">
-        <span class="nav-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+        <span class="nav-icon">📋</span>
         طلبات التواصل
         <span class="nav-badge" *ngIf="counts.new > 0">{{ counts.new }}</span>
       </button>
     </nav>
-
     <div class="sidebar-user">
-      <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+      <div class="user-avatar">👤</div>
       <div class="user-info">
         <div class="user-name">المشرف</div>
         <div class="user-email">{{ userEmail }}</div>
       </div>
-      <button class="logout-btn" (click)="logout()" title="تسجيل الخروج"><i class="fa-solid fa-power-off"></i></button>
+      <button class="logout-btn" (click)="logout()" title="تسجيل الخروج">⏻</button>
     </div>
   </aside>
 
@@ -33,94 +31,60 @@
     <div class="top-bar">
       <h1 class="page-title">طلبات التواصل</h1>
       <div class="top-stats">
-        <div class="top-stat">
-          <span class="stat-icon"><i class="fa-solid fa-list-check"></i></span>
-          <span>
-            <span class="ts-num">{{ counts.all }}</span>
-            <span class="ts-label">إجمالي</span>
-          </span>
-        </div>
-        <div class="top-stat new">
-          <span class="stat-icon"><i class="fa-solid fa-bell"></i></span>
-          <span>
-            <span class="ts-num">{{ counts.new }}</span>
-            <span class="ts-label">جديد</span>
-          </span>
-        </div>
-        <div class="top-stat contacted">
-          <span class="stat-icon"><i class="fa-solid fa-phone"></i></span>
-          <span>
-            <span class="ts-num">{{ counts.contacted }}</span>
-            <span class="ts-label">تم التواصل</span>
-          </span>
-        </div>
-        <div class="top-stat enrolled">
-          <span class="stat-icon"><i class="fa-solid fa-user-check"></i></span>
-          <span>
-            <span class="ts-num">{{ counts.enrolled }}</span>
-            <span class="ts-label">مسجّل</span>
-          </span>
-        </div>
+        <div class="top-stat"><span class="ts-num">{{ counts.all }}</span><span class="ts-label">إجمالي</span></div>
+        <div class="top-stat new"><span class="ts-num">{{ counts.new }}</span><span class="ts-label">جديد</span></div>
+        <div class="top-stat contacted"><span class="ts-num">{{ counts.contacted }}</span><span class="ts-label">تم التواصل</span></div>
+        <div class="top-stat enrolled"><span class="ts-num">{{ counts.enrolled }}</span><span class="ts-label">مسجّل</span></div>
       </div>
     </div>
 
-    <!-- Filters -->
     <div class="filters">
-      <button class="filter-btn" [class.active]="activeFilter === 'all'" (click)="applyFilter('all')">
-        الكل <span class="filter-count">{{ counts.all }}</span>
-      </button>
-      <button class="filter-btn" [class.active]="activeFilter === 'new'" (click)="applyFilter('new')">
-        <i class="fa-solid fa-circle filter-dot new"></i> جديد <span class="filter-count">{{ counts.new }}</span>
-      </button>
-      <button class="filter-btn" [class.active]="activeFilter === 'contacted'" (click)="applyFilter('contacted')">
-        <i class="fa-solid fa-circle filter-dot contacted"></i> تم التواصل <span class="filter-count">{{ counts.contacted }}</span>
-      </button>
-      <button class="filter-btn" [class.active]="activeFilter === 'enrolled'" (click)="applyFilter('enrolled')">
-        <i class="fa-solid fa-circle filter-dot enrolled"></i> مسجّل <span class="filter-count">{{ counts.enrolled }}</span>
-      </button>
-      <button class="filter-btn" [class.active]="activeFilter === 'closed'" (click)="applyFilter('closed')">
-        <i class="fa-solid fa-circle filter-dot closed"></i> مغلق <span class="filter-count">{{ counts.closed }}</span>
-      </button>
+      <button class="filter-btn" [class.active]="activeFilter==='all'" (click)="applyFilter('all')">الكل <span class="filter-count">{{counts.all}}</span></button>
+      <button class="filter-btn" [class.active]="activeFilter==='new'" (click)="applyFilter('new')">🔵 جديد <span class="filter-count">{{counts.new}}</span></button>
+      <button class="filter-btn" [class.active]="activeFilter==='contacted'" (click)="applyFilter('contacted')">🟡 تم التواصل <span class="filter-count">{{counts.contacted}}</span></button>
+      <button class="filter-btn" [class.active]="activeFilter==='enrolled'" (click)="applyFilter('enrolled')">🟢 مسجّل <span class="filter-count">{{counts.enrolled}}</span></button>
+      <button class="filter-btn" [class.active]="activeFilter==='closed'" (click)="applyFilter('closed')">⚫ مغلق <span class="filter-count">{{counts.closed}}</span></button>
     </div>
 
-    <!-- Loading -->
     <div class="loading-state" *ngIf="loading">
-      <i class="fa-solid fa-spinner fa-spin"></i>
-      <span>جاري تحميل الطلبات...</span>
+      <div class="spinner"></div><span>جاري تحميل الطلبات...</span>
     </div>
 
-    <!-- Empty -->
     <div class="empty-state" *ngIf="!loading && filtered.length === 0">
-      <div class="empty-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+      <div class="empty-icon">📭</div>
       <h3>لا توجد طلبات</h3>
       <p>لم يصل أي طلب بعد في هذه الفئة</p>
     </div>
 
-    <!-- Table -->
     <div class="table-wrap" *ngIf="!loading && filtered.length > 0">
       <table class="requests-table">
         <thead>
           <tr>
-            <th>الاسم</th>
+            <th>الطالب</th>
+            <th>ولي الأمر</th>
             <th>الهاتف</th>
+            <th>التشخيص</th>
             <th>الخدمة</th>
-            <th>الفئة العمرية</th>
             <th>التاريخ</th>
             <th>الحالة</th>
-            <th>إجراءات</th>
+            <th>تغيير</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let r of filtered" (click)="openRequest(r)" class="table-row">
-            <td><strong>{{ r.name }}</strong></td>
-            <td dir="ltr">{{ r.phone }}</td>
+            <td>
+              <div class="student-cell">
+                <strong>{{ r.name }}</strong>
+                <span class="cell-sub">{{ r.studentAge || '—' }}</span>
+              </div>
+            </td>
+            <td>{{ r.parentName || '—' }}</td>
+            <td dir="ltr" class="phone-td">{{ r.phone }}</td>
+            <td><span class="diagnosis-tag" *ngIf="r.diagnosis">{{ r.diagnosis }}</span><span *ngIf="!r.diagnosis">—</span></td>
             <td class="service-cell">{{ r.service || '—' }}</td>
-            <td>{{ r.age || '—' }}</td>
             <td class="date-cell">{{ formatDate(r.createdAt) }}</td>
             <td>
-              <span class="status-badge" [class]="statusColors[r.status]">
-                {{ statusLabels[r.status] }}
-              </span>
+              <span class="status-badge" [class]="statusColors[r.status]">{{ statusLabels[r.status] }}</span>
             </td>
             <td class="actions-cell" (click)="$event.stopPropagation()">
               <select class="status-select" [value]="r.status" (change)="updateStatus(r.id, $any($event.target).value)">
@@ -141,61 +105,76 @@
   <div class="detail-panel" *ngIf="activeRequest">
     <div class="panel-header">
       <h3 class="panel-title">تفاصيل الطلب</h3>
-      <button class="panel-close" (click)="closeRequest()"><i class="fa-solid fa-xmark"></i></button>
+      <button type="button" class="panel-close" (click)="closeRequest()" aria-label="إغلاق">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
-
     <div class="panel-body">
-      <div class="detail-section">
-        <div class="detail-row">
-          <span class="detail-label">الاسم</span>
-          <span class="detail-value">{{ activeRequest.name }}</span>
+
+      <!-- بيانات الطالب -->
+      <div class="panel-section">
+        <div class="panel-section-title">
+          <span class="ps-icon"><i class="fa-solid fa-user-graduate"></i></span> بيانات الطالب
         </div>
+        <div class="detail-row"><span class="detail-label">اسم الطالب</span><span class="detail-value">{{ activeRequest.name }}</span></div>
+        <div class="detail-row"><span class="detail-label">العمر</span><span class="detail-value">{{ activeRequest.studentAge || '—' }}</span></div>
+        <div class="detail-row"><span class="detail-label">التشخيص</span><span class="detail-value">{{ activeRequest.diagnosis || 'لم يُحدد' }}</span></div>
+      </div>
+
+      <!-- بيانات ولي الأمر -->
+      <div class="panel-section">
+        <div class="panel-section-title">
+          <span class="ps-icon"><i class="fa-solid fa-users"></i></span> بيانات ولي الأمر
+        </div>
+        <div class="detail-row"><span class="detail-label">الاسم</span><span class="detail-value">{{ activeRequest.parentName || '—' }}</span></div>
         <div class="detail-row">
           <span class="detail-label">الهاتف</span>
           <a [href]="'tel:' + activeRequest.phone" class="detail-value phone-link" dir="ltr">{{ activeRequest.phone }}</a>
         </div>
         <div class="detail-row">
           <span class="detail-label">واتساب</span>
-          <a [href]="'https://wa.me/971' + activeRequest.phone.replace('0','')" target="_blank" class="detail-value wa-link">
-            <i class="fa-brands fa-whatsapp"></i> فتح واتساب
+          <a [href]="getWhatsAppLink(activeRequest.phone)" target="_blank" class="wa-link">
+            <i class="fa-brands fa-whatsapp"></i>
+            فتح واتساب
           </a>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">الخدمة</span>
-          <span class="detail-value">{{ activeRequest.service || '—' }}</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">الفئة العمرية</span>
-          <span class="detail-value">{{ activeRequest.age || '—' }}</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">تاريخ الطلب</span>
-          <span class="detail-value">{{ formatDate(activeRequest.createdAt) }}</span>
-        </div>
-        <div class="detail-row" *ngIf="activeRequest.message">
-          <span class="detail-label">الرسالة</span>
-          <span class="detail-value message-val">{{ activeRequest.message }}</span>
         </div>
       </div>
 
+      <!-- الخدمة -->
+      <div class="panel-section">
+        <div class="panel-section-title">
+          <span class="ps-icon"><i class="fa-solid fa-clipboard-list"></i></span> الخدمة والملاحظات
+        </div>
+        <div class="detail-row"><span class="detail-label">الخدمة</span><span class="detail-value">{{ activeRequest.service || '—' }}</span></div>
+        <div class="detail-row" *ngIf="activeRequest.message">
+          <span class="detail-label">ملاحظات</span>
+          <span class="detail-value message-val">{{ activeRequest.message }}</span>
+        </div>
+        <div class="detail-row"><span class="detail-label">تاريخ الطلب</span><span class="detail-value">{{ formatDate(activeRequest.createdAt) }}</span></div>
+      </div>
+
+      <!-- Actions -->
       <div class="panel-actions">
         <p class="actions-label">تغيير حالة الطلب:</p>
         <div class="status-btns">
-          <button class="status-action-btn new-btn"
-            [class.active-status]="activeRequest.status === 'new'"
-            (click)="updateStatus(activeRequest.id, 'new')"><i class="fa-solid fa-bell"></i> جديد</button>
-          <button class="status-action-btn contacted-btn"
-            [class.active-status]="activeRequest.status === 'contacted'"
-            (click)="updateStatus(activeRequest.id, 'contacted')"><i class="fa-solid fa-phone"></i> تم التواصل</button>
-          <button class="status-action-btn enrolled-btn"
-            [class.active-status]="activeRequest.status === 'enrolled'"
-            (click)="updateStatus(activeRequest.id, 'enrolled')"><i class="fa-solid fa-user-check"></i> تسجّل</button>
-          <button class="status-action-btn closed-btn"
-            [class.active-status]="activeRequest.status === 'closed'"
-            (click)="updateStatus(activeRequest.id, 'closed')"><i class="fa-solid fa-lock"></i> مغلق</button>
+          <button type="button" class="status-action-btn" [class.active-status]="activeRequest.status==='new'" (click)="updateStatus(activeRequest.id,'new')">
+            <i class="fa-solid fa-circle"></i> جديد
+          </button>
+          <button type="button" class="status-action-btn" [class.active-status]="activeRequest.status==='contacted'" (click)="updateStatus(activeRequest.id,'contacted')">
+            <i class="fa-solid fa-circle"></i> تم التواصل
+          </button>
+          <button type="button" class="status-action-btn" [class.active-status]="activeRequest.status==='enrolled'" (click)="updateStatus(activeRequest.id,'enrolled')">
+            <i class="fa-solid fa-circle"></i> تسجّل
+          </button>
+          <button type="button" class="status-action-btn" [class.active-status]="activeRequest.status==='closed'" (click)="updateStatus(activeRequest.id,'closed')">
+            <i class="fa-solid fa-circle"></i> مغلق
+          </button>
         </div>
-        <button class="delete-btn" (click)="deleteRequest(activeRequest.id)"><i class="fa-solid fa-trash-can"></i> حذف الطلب</button>
+        <button type="button" class="delete-btn" (click)="deleteRequest(activeRequest.id)">
+          <i class="fa-solid fa-trash-can"></i> حذف الطلب
+        </button>
       </div>
+
     </div>
   </div>
 
