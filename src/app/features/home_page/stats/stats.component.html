@@ -31,12 +31,12 @@
           <div class="step-card">
             <div class="card-badge">{{ s.badge }}</div>
             <div class="card-emoji"><i [class]="s.emoji" style="color: white;"></i></div>
-            <h3 class="card-title">{{ s.title }}</h3>
+            <h3 class="card-title">{{ s.short }}</h3>
             <p class="card-subtitle">{{ s.subtitle }}</p>
-            <div class="card-short">
+            <!-- <div class="card-short">
               <i class="fa-solid fa-quote-right"></i>
               {{ s.short }}
-            </div>
+            </div> -->
 
             <!-- Expanded content -->
             <div class="card-body" [class.open]="activeStep === i">
