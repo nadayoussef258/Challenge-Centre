@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {  NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
 
 
 @Component({
@@ -11,4 +12,14 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('challenge_centre');
+    showFloatingIcons = true;
+
+  constructor(private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      // تخفي في أي route فيه /admin/
+      this.showFloatingIcons = !event.urlAfterRedirects.startsWith('/admin');
+    });
+  }
 }

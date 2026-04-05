@@ -13,7 +13,8 @@
     <!-- Main Services Grid (6 cards) -->
     <div class="services-grid">
       <div class="service-card" *ngFor="let s of services; let i = index"
-           [style.animation-delay]="(i * 0.1) + 's'">
+     [style.animation-delay]="(i * 0.1) + 's'"
+     (click)="scrollToContact()">
         <div class="service-icon-wrap">
           <i [class]="s.icon + ' service-icon'" style="color: var(--primary);"></i>
         </div>
@@ -41,8 +42,9 @@
       </div>
 
       <div class="community-grid">
-        <div class="community-card" *ngFor="let s of communityServices; let i = index"
-             [style.animation-delay]="(i * 0.12) + 's'">
+       <div class="community-card" *ngFor="let s of communityServices; let i = index"
+     [style.animation-delay]="(i * 0.12) + 's'"
+     (click)="scrollToContact()">
           <div class="community-icon-wrap">
             <i [class]="s.icon"></i>
           </div>

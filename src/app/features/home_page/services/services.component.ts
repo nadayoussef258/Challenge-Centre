@@ -13,6 +13,11 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  scrollToContact() {
+  const el = document.getElementById('contact');
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
   services = [
     {
       icon: 'fa-solid fa-book-open',
