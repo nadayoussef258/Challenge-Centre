@@ -162,3 +162,122 @@
   .about-values { grid-template-columns: 1fr; }
   .about { padding: 60px 0; }
 }
+
+/* ── Mission & Vision ── */
+.mv-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+  margin-top: 64px;
+}
+
+.mv-card {
+  border-radius: 22px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mv-card.mission {
+  background: var(--primary);
+  border: 1.5px solid rgba(125, 196, 31, 0.35);
+}
+
+.mv-card.vision {
+  background: var(--off-white);
+  border: 1.5px solid var(--light-gray);
+}
+
+.mv-card::before {
+  content: '';
+  position: absolute;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  bottom: -40px; left: -40px;
+  pointer-events: none;
+}
+
+.mv-card.mission::before { background: rgba(125, 196, 31, 0.1); }
+.mv-card.vision::before  { background: rgba(45, 45, 142, 0.06); }
+
+.mv-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mv-icon {
+  width: 50px; height: 50px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.mission .mv-icon {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 4px 14px rgba(125, 196, 31, 0.45);
+}
+
+.vision .mv-icon {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 14px var(--shadow-strong);
+}
+
+.mv-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.mission .mv-label {
+  background: rgba(125, 196, 31, 0.2);
+  color: var(--accent-light);
+  border: 1px solid rgba(125, 196, 31, 0.3);
+}
+
+.vision .mv-label {
+  background: rgba(45, 45, 142, 0.08);
+  color: var(--primary);
+  border: 1px solid rgba(45, 45, 142, 0.2);
+}
+
+.mv-bar {
+  width: 40px; height: 4px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.mv-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.mission .mv-title { color: var(--white); }
+.vision  .mv-title { color: var(--primary); }
+
+.mv-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  line-height: 1.9;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.mission .mv-text { color: rgba(255, 255, 255, 0.82); }
+.vision  .mv-text { color: var(--text-muted); }
+
+@media (max-width: 640px) {
+  .mv-section { grid-template-columns: 1fr; }
+  .mv-card { padding: 28px 22px; }
+}
